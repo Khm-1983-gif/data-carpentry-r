@@ -33,4 +33,29 @@ interviews[1,1]
 
  as.numeric(levels(year_fct))[year_fct]   # The recommended way. 
 
+ 
+ ## create a vector from the data frame column "affect_conflicts"
+ affect_conflicts <- interviews$affect_conflicts
+ ## convert it into a factor
+ affect_conflicts <- as.factor(affect_conflicts)
+ ## let's see what it looks like
+ affect_conflicts
+ 
+ ## bar plot of the number of interview respondents who were
+ ## affected by conflicts with different frequency:
+ plot(affect_conflicts)
+ 
+ 
+ ## Let's recreate the vector from the data frame column "affect_conflicts"
+ affect_conflicts <- interviews$affect_conflicts
+ ## replace the missing data with "undetermined"
+ affect_conflicts[is.na(affect_conflicts)] <- "undetermined"
+ ## convert it into a factor
+ affect_conflicts <- as.factor(affect_conflicts)
+ ## let's see what it looks like
+ affect_conflicts
+ 
+ levels(affect_conflicts)[2] <- "more than once"
+ affect_conflicts <- factor(affect_conflicts, levels = c("never", "more than once", "frequently", "once", "undetermined"))
+ plot(affect_conflicts)
   
